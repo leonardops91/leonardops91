@@ -15,7 +15,7 @@ export function Text(props: TextProps) {
         case "textSmall":
             return <p className="font-thin text-sm text-purple-100">{props.content}</p>
         default:
-            return <p className="font-extralight text-md text-purple-100">{props.content}</p>
+            return <p className="font-light text-md text-purple-100">{props.content}</p>
     }
 
 }

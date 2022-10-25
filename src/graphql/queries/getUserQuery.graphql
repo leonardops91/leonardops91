@@ -1,0 +1,19 @@
+
+query GetUserInfo {
+  userProfile(where: {id: "${import.meta.env.VITE_USER_ID}"}) {
+    avatarURL
+    careerdescription
+    name
+    objective
+  }
+  educationDegrees{
+    name
+    institute
+    initialDate
+    endDate
+  }
+  famousPhrases {
+    phrase
+    author
+  }
+}
