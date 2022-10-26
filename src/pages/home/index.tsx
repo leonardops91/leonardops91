@@ -13,7 +13,7 @@ type HomeProps = {
     author?: string
   },
   setPageColor: Dispatch<SetStateAction<string>>
-
+  pageColor: string
 };
 
 export default function Home(props: HomeProps) {
@@ -27,11 +27,11 @@ export default function Home(props: HomeProps) {
           alt="user avatar"
           className="rounded-full w-44"
         />
-        <Text variant="subtitle" content={props.userProfile?.name} />
+        <Text variant="subtitle" content={props.userProfile?.name} pageColor={props.pageColor}/>
       </div>
       <div className="italic flex flex-col items-center">
-        <Text content={props.famousPhrase?.phrase}/>
-        <Text content={props.famousPhrase?.author}/>
+        <Text variant="outlined" content={props.famousPhrase?.phrase} pageColor={props.pageColor}/>
+        <Text content={props.famousPhrase?.author} pageColor={props.pageColor}/>
       </div>
     </section>
   );

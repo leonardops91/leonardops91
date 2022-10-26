@@ -3,6 +3,7 @@ import { Toggle } from "../toggle";
 
 type headerProps ={
     setGeneralTheme: Dispatch<SetStateAction<string>>
+    pageColor: string
 }
 
 export default function Header(props: headerProps) {
@@ -13,7 +14,7 @@ export default function Header(props: headerProps) {
       <section className="flex items-center justify-between border-b-2 border-purple-100 h-[10vh] max-w-screen-xl w-full z-10">
         <h1 className="font-normal text-md text-purple-100">About</h1>
         <h1 className="text-md text-purple-100">Education</h1>
-        <Toggle setPageTheme={setPageTheme} />
+        <Toggle setPageTheme={setPageTheme} pageColor={props.pageColor}/>
         <h1 className="text-md text-purple-100">Projects</h1>
         <h1 className="text-md text-purple-100">Contact</h1>
       </section>
