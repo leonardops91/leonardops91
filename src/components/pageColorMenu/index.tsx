@@ -6,10 +6,11 @@ type pageColorMenuProps ={
 }
 
 export function PageColorMenu(props: pageColorMenuProps) {
-    const [pageColor, setPageColor] = useState('purple')
+    const [pageColor, setPageColor] = useState(localStorage.getItem('pageColor') || 'purple')
 
     function handleClick(color: string){
         setPageColor(color)
+        localStorage.setItem('pageColor', color)
         props.setPageColor(color)
     }
     return (
