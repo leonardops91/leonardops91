@@ -1,24 +1,30 @@
-import { useState, useRef } from "react";
-import Header from "./components/header";
+import { useState } from "react";
 import { useGetUserInfoQuery } from "./graphql/generated";
 import About from "./pages/about";
-import Cover from "./pages/cover";
 import Education from "./pages/education";
 import Projects from "./pages/projects";
 import Contact from "./pages/contact";
 import ToTopButton from "./components/toTopButton";
+import Home from "./pages/home";
+import Footer from "./components/footer";
 
 type colorsStylesType = {
-  [key: string]: string;
+  [key: string]: { [key: string]: string };
 };
 
 const colorsStyles: colorsStylesType = {
-  purple:
-    "before:bg-purple-900 bg-purple-900 after:shadow-[inset_0_-200px_80px_0_rgb(54_19_82_/_0.75)]",
-  blue: "before:bg-blue-900 bg-blue-900 after:shadow-[inset_0_-200px_80px_0_rgb(15_23_42_/_0.75)]",
-  green:
-    "before:bg-green-900 bg-green-900 after:shadow-[inset_0_-200px_80px_0_rgb(6_78_59_/_0.75)]",
-  red: "before:bg-red-900 bg-red-900 after:shadow-[inset_0_-200px_80px_0_rgb(136_19_55_/_0.75)]",
+  dark: {
+    purple: `bg-purple-900 text-purple-100`,
+    blue: `bg-blue-900 text-blue-100`,
+    green: `bg-green-900 text-green-100`,
+    red: `bg-red-900 text-red-100`,
+  },
+  light: {
+    purple: `bg-purple-100 text-purple-900`,
+    blue: `bg-blue-100 text-blue-900`,
+    green: `bg-green-100 text-green-900`,
+    red: `bg-red-100 text-red-900`,
+  },
 };
 
 function App() {
@@ -26,39 +32,43 @@ function App() {
   const [pageColor, setPageColor] = useState(
     localStorage.getItem("pageColor") || "purple"
   );
-  const colorClass = colorsStyles[pageColor];
-  const [generalTheme, setGeneralTheme] = useState("dark");
+  const [generalTheme, setGeneralTheme] = useState(
+    localStorage.getItem("theme") || "dark"
+  );
+  const colorClass = colorsStyles[generalTheme][pageColor];
   const themeClass =
-    generalTheme === "dark" ? `before:opacity-80` : `before:opacity-10`;
+    generalTheme === "dark" ? "before:opacity-80" : "before:opacity-10";
 
-  const userProfile = {
-    avatarURL: data?.userProfile?.avatarURL,
-    name: data?.userProfile?.name,
-  };
-  const famousPhrase = {
-    phrase: data?.famousPhrases[0].phrase,
-    author: data?.famousPhrases[0].author,
-  };
-
+  const [isScreenOntop, setIsScreenOnTop] = useState(true);
+  window.addEventListener("scroll", () => {
+    window.scrollY !== 0 ? setIsScreenOnTop(false) : setIsScreenOnTop(true);
+  });
 
   return (
     <>
-      <div
-        className={`scrollbar-hide flex flex-col items-center bg-code bg-cover bg-no-repeat before:absolute after:absolute after:w-full after:h-[100vh] before:w-full before:h-[100vh] ${colorClass} ${themeClass}`}
-      >
-        <Header setGeneralTheme={setGeneralTheme} pageColor={pageColor} />
-        <Cover
-          userProfile={userProfile}
-          famousPhrase={famousPhrase}
-          setPageColor={setPageColor}
-          pageColor={pageColor}
-        />
-      </div>
-      <About id="about"/>
-      <Education id="education"/>
-      <Projects id="projects"/>
-      <Contact id="contact"/>
-      <ToTopButton pageColor={pageColor}/>
+      {!data ? (
+        <div
+          className={`flex items-center justify-center w-screen h-screen ${colorClass}`}
+        >
+          <div className="bg-white border-black border-2 border-t-0 rounded-full animate-ping w-8 h-8"></div>
+        </div>
+      ) : (
+        <div className={`${colorClass}`}>
+          <Home
+            data={data}
+            pageColor={pageColor}
+            setGeneralTheme={setGeneralTheme}
+            themeClass={themeClass}
+            setPageColor={setPageColor}
+          />
+          <About data={data} id="about" />
+          <Education data={data} id="education" pageColor={pageColor}/>
+          <Projects data={data} id="projects" />
+          <Contact data={data} id="contact" pageColor={pageColor}/>
+          <Footer pageColor={pageColor} />
+          {!isScreenOntop && <ToTopButton pageColor={pageColor} />}
+        </div>
+      )}
     </>
   );
 }
