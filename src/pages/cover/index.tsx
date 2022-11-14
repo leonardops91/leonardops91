@@ -19,7 +19,7 @@ type CoverProps = {
 export default function Cover(props: CoverProps) {
 
   return (
-    <section className="relative flex flex-col items-center justify-around h-[90vh] z-10">
+    <section className="relative flex flex-col items-center justify-around h-[100vh] z-10">
       <PageColorMenu setPageColor={props.setPageColor}/>
       <div className="flex items-center flex-col">
         <img
@@ -27,11 +27,11 @@ export default function Cover(props: CoverProps) {
           alt="user avatar"
           className="rounded-full w-44"
         />
-        <Text variant="subtitle" content={props.userProfile?.name} pageColor={props.pageColor}/>
+        <Text variant="subtitle" content={props.userProfile?.name} />
       </div>
       <div className="italic flex flex-col items-center">
-        <Text variant="outlined" content={props.famousPhrase?.phrase} pageColor={props.pageColor}/>
-        <Text content={props.famousPhrase?.author} pageColor={props.pageColor}/>
+        <Text variant="outlined" content={props.famousPhrase?.phrase} />
+        <Text content={props.famousPhrase?.author} />
       </div>
     </section>
   );

@@ -10,11 +10,22 @@ type headerProps ={
 export default function Header(props: headerProps) {
     return (
       <section className="flex items-center justify-between border-b-2 border-purple-100 h-[10vh] max-w-screen-xl w-full z-10">
-        <Link content="About" href={"about"} pageColor={props.pageColor} />
-        <Link content="Education" href="education" pageColor={props.pageColor} />
-        <Toggle setPageTheme={props.setGeneralTheme} pageColor={props.pageColor} />
-        <Link content="Projects" href="projects" pageColor={props.pageColor} />
-        <Link content="Contact" href="contact" pageColor={props.pageColor} />
+          <Link content="About" href={"about"} pageColor={props.pageColor} />
+          <Link
+            content="Education"
+            href="education"
+            pageColor={props.pageColor}
+          />
+          <Toggle
+            setPageTheme={props.setGeneralTheme}
+            pageColor={props.pageColor}
+          />
+          <Link
+            content="Projects"
+            href="projects"
+            pageColor={props.pageColor}
+          />
+          <Link content="Contact" href="contact" pageColor={props.pageColor} />
       </section>
     );
 }

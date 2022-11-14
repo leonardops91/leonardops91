@@ -41,7 +41,7 @@ function App() {
 
   const [isScreenOntop, setIsScreenOnTop] = useState(true);
   window.addEventListener("scroll", () => {
-    window.scrollY !== 0 ? setIsScreenOnTop(false) : setIsScreenOnTop(true);
+    setIsScreenOnTop(window.scrollY === 0)
   });
 
   return (
@@ -53,7 +53,7 @@ function App() {
           <div className="bg-white border-black border-2 border-t-0 rounded-full animate-ping w-8 h-8"></div>
         </div>
       ) : (
-        <div className={`${colorClass}`}>
+        <div className={`${colorClass} overflow-hidden`}>
           <Home
             data={data}
             pageColor={pageColor}
@@ -62,9 +62,9 @@ function App() {
             setPageColor={setPageColor}
           />
           <About data={data} id="about" />
-          <Education data={data} id="education" pageColor={pageColor}/>
+          <Education data={data} id="education" pageColor={pageColor} themeClass={themeClass}/>
           <Projects data={data} id="projects" />
-          <Contact data={data} id="contact" pageColor={pageColor}/>
+          <Contact data={data} id="contact" pageColor={pageColor} themeClass={themeClass}/>
           <Footer pageColor={pageColor} />
           {!isScreenOntop && <ToTopButton pageColor={pageColor} />}
         </div>

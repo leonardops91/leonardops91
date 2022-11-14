@@ -1,33 +1,40 @@
-import { stringifyForDisplay } from "@apollo/client/utilities";
-import { MutableRefObject } from "react";
+import { Text } from "../../components/textComponent";
 import { GetUserInfoQuery } from "../../graphql/generated";
+import Slider from '../../components/slider/index.js'
 
 type ProjectsProps = {
-  data?: GetUserInfoQuery;
+  data: GetUserInfoQuery;
   id: string;
 };
 
 type projectsType = {
-  projects?: {
+  projects:{
     name: string;
     projectRepositoryURL: string;
     projectpreviewURL?: string | null;
     snapURL?: string | null;
     type: string;
     description: string;
-  }[];
+  }[]
 };
 
 export default function Projects(props: ProjectsProps){
   const projectsInfo: projectsType = {
-    projects: props.data?.projects
+    projects: props.data.projects
   }
     return (
-      <div id={props.id} className="w-screen h-screen overflow-hidden border-b-2 border-black flex align-center justify-center">
-        <h1 className="">
-
-        {stringifyForDisplay(projectsInfo)}
-        </h1>
-      </div>
+      <section
+        id={props.id}
+        className="w-screen h-[110vh] py-6 overflow-hidden flex flex-col items-center "
+      >
+        <div className="flex flex-col items-center max-w-screen-xl w-full h-[80%]">
+          <header>
+            <Text variant="title" content="Projects" />
+          </header>
+          <main className="h-full w-full"><Slider cardsInfo={projectsInfo.projects} /></main>
+          
+        </div>
+      </section>
     );
 }
+

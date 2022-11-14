@@ -1,4 +1,3 @@
-
 query GetUserInfo {
   userProfile(where: {id: "cl9bxt81n4o480alpkseloos6"}) {
     avatarURL
@@ -24,7 +23,7 @@ query GetUserInfo {
     position
     startDate
     technologies {
-      name
+        name
     }
   }
   courses {

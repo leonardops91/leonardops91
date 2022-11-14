@@ -6,7 +6,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage:{
-        code: 'url(/src/assets/bg-code.jpg)'
+        code: 'url(/src/assets/bg-code.jpg)',
+        space: 'url(/src/assets/bg-space.jpg)',
+        nature: 'url(/src/assets/bg-nature.jpg)',
+        gradient: "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1)"
       },
       fontSize: {
         sm: 16,

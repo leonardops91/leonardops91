@@ -25,6 +25,19 @@ const colorsStyles: colorsStylesType = {
 
  export default function Home(props: HomeProps) {
   const colorClass = colorsStyles[props.pageColor];
+  const position = localStorage.getItem('scrollPosition')
+  if(position) {
+    const positionAsNumber = +position
+    setTimeout(() => {
+      window.scrollTo(0, positionAsNumber)
+    }, 1);
+    
+  }
+
+  window.onscroll = () => {
+    let actualPosition = window.scrollY
+    localStorage.setItem('scrollPosition', actualPosition.toString())
+  }
 
   const userProfile = {
     avatarURL: props.data?.userProfile?.avatarURL,
@@ -37,7 +50,7 @@ const colorsStyles: colorsStylesType = {
 
    return (
      <div
-       className={`scrollbar-hide flex flex-col items-center bg-code bg-cover bg-no-repeat before:absolute after:absolute after:w-full after:h-[100vh] before:w-full before:h-[100vh] ${colorClass} ${props.themeClass}`}
+       className={`flex flex-col items-center bg-code bg-cover bg-no-repeat before:absolute after:absolute after:w-full after:h-[110vh] before:w-full before:h-[110vh] ${colorClass} ${props.themeClass}`}
      >
        <Header
          setGeneralTheme={props.setGeneralTheme}
@@ -52,3 +65,7 @@ const colorsStyles: colorsStylesType = {
      </div>
    );
  }
+
+function useState(): [any, any] {
+  throw new Error("Function not implemented.");
+}

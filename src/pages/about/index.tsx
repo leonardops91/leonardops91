@@ -1,5 +1,4 @@
-import { stringifyForDisplay } from "@apollo/client/utilities";
-import { Strategy, Student, Flask, StarFour } from "phosphor-react";
+import { Strategy, Student, Flask } from "phosphor-react";
 import { Text } from "../../components/textComponent";
 import { GetUserInfoQuery } from "../../graphql/generated";
 
@@ -28,7 +27,6 @@ type AboutType = {
   }[];
 };
 
-
 export default function About(props: AboutProps) {
 
   const userBackground: AboutType = {
@@ -38,33 +36,25 @@ export default function About(props: AboutProps) {
   };
 
   return (
-    <div
-      id="about"
-      className={`flex flex-col gap-4 items-center  m-auto max-w-screen-xl w-full h-screen py-6`}
+    <section id="about" className={`flex flex-col gap-4 items-start m-auto max-w-screen-xl w-full h-[110vh] py-6`}
     >
-      <Text variant="title" content={props.id}/>
-      <section className="flex flex-col w-full items-baseline">
-        <div className="flex items-center justify-center gap-4">
-          <Strategy size={32}/>
-          <Text
-            variant="subtitle"
-            content="Background"
-          />
-        </div>
-        <div className="w-full ">
-          <Text variant="small" content={userBackground.careerDescription}/>
-        </div>
-      </section>
-      <section className="flex flex-col w-full items-baseline">
-        <div className="flex items-center justify-center gap-4">
-          <Student size={32}/>
-          <Text
-            variant="subtitle"
-            content="General Education"
-          />
-        </div>
-        <div className="flex flex-col-reverse gap-4 w-full ">
-          {userBackground.education?.map(course => {
+      <Text variant="title" content="About" className="" />
+      <div className="flex flex-col w-full items-baseline">
+        <header className="flex items-center justify-center gap-4">
+          <Strategy size={32} />
+          <Text variant="subtitle" content="Background" />
+        </header>
+        <main className="w-full ">
+          <Text variant="small" content={userBackground.careerDescription} />
+        </main>
+      </div>
+      <div className="flex flex-col w-full items-baseline">
+        <header className="flex items-center justify-center gap-4">
+          <Student size={32} />
+          <Text variant="subtitle" content="General Education" />
+        </header>
+        <main className="flex flex-col-reverse gap-4 w-full ">
+          {userBackground.education?.map((course) => {
             return (
               <ul>
                 <li className="flex gap-1">
@@ -72,27 +62,30 @@ export default function About(props: AboutProps) {
                   <Text variant="bold" content={course.name} />
                   -
                   <Text variant="small" content={course.institute} />
-                  (<Text variant="small" content={course.initialDate.toString()} /> - <Text variant="small" content={course.endDate?.toString()} />)
+                  (
+                  <Text
+                    variant="small"
+                    content={course.initialDate.toString()}
+                  />{" "}
+                  -{" "}
+                  <Text variant="small" content={course.endDate?.toString()} />)
                 </li>
               </ul>
             );
           })}
-        </div>
-      </section>
-      <section className="flex flex-col w-full items-baseline">
-        <div className="flex items-center justify-center gap-4">
-          <Flask size={32}/>
-          <Text
-            variant="subtitle"
-            content="IT Experience"
-          />
-        </div>
-        <div className="flex flex-col-reverse gap-4 w-full ">
-          {userBackground.experiences?.map(experience => {
+        </main>
+      </div>
+      <div className="flex flex-col w-full items-baseline">
+        <header className="flex items-center justify-center gap-4">
+          <Flask size={32} />
+          <Text variant="subtitle" content="IT Experience" />
+        </header>
+        <main className="flex flex-col-reverse gap-4 w-full ">
+          {userBackground.experiences?.map((experience) => {
             return (
               <ul>
                 <li className="flex flex-col gap-1 ">
-                  <header className="flex gap-3">
+                  <header className="flex gap-1">
                     ▪
                     <Text variant="bold" content={experience.companyName} />
                     -
@@ -115,24 +108,31 @@ export default function About(props: AboutProps) {
                       -
                       <Text
                         variant="small"
-                        content={experience.endDate ? experience.endDate?.toString() : "Current"}
+                        content={
+                          experience.endDate
+                            ? experience.endDate?.toString()
+                            : "Current"
+                        }
                       />
                     </div>
                     <div className="flex gap-1">
                       ▪ Technologies
-                      {
-                        experience.technologies.map(technology => {
-                          return <Text variant="small" content={`- ${technology.name}`} />
-                        })
-                      }
+                      {experience.technologies.map((technology) => {
+                        return (
+                          <Text
+                            variant="small"
+                            content={`- ${technology.name}`}
+                          />
+                        );
+                      })}
                     </div>
                   </main>
                 </li>
               </ul>
             );
           })}
-        </div>
-      </section>
-    </div>
+        </main>
+      </div>
+    </section>
   );
 }

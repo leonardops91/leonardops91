@@ -7344,7 +7344,6 @@ export type Technology = Node & {
   createdBy?: Maybe<User>;
   /** Get the document in other stages */
   documentInStages: Array<Technology>;
-  experiences: Array<Experience>;
   /** List of Technology versions */
   history: Array<Version>;
   /** The unique identifier */
@@ -7375,18 +7374,6 @@ export type TechnologyDocumentInStagesArgs = {
   includeCurrent?: Scalars['Boolean'];
   inheritLocale?: Scalars['Boolean'];
   stages?: Array<Stage>;
-};
-
-
-export type TechnologyExperiencesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<ExperienceOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ExperienceWhereInput>;
 };
 
 
@@ -7436,8 +7423,8 @@ export type TechnologyConnection = {
 
 export type TechnologyCreateInput = {
   cl9byrjtr46s001ta49p61v1w?: InputMaybe<ProjectCreateManyInlineInput>;
+  clah4oi4s0hbi01t64gyo9e97?: InputMaybe<ExperienceCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  experiences?: InputMaybe<ExperienceCreateManyInlineInput>;
   knowledgeLevel: Scalars['Int'];
   name: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
@@ -7495,9 +7482,6 @@ export type TechnologyManyWhereInput = {
   documentInStages_every?: InputMaybe<TechnologyWhereStageInput>;
   documentInStages_none?: InputMaybe<TechnologyWhereStageInput>;
   documentInStages_some?: InputMaybe<TechnologyWhereStageInput>;
-  experiences_every?: InputMaybe<ExperienceWhereInput>;
-  experiences_none?: InputMaybe<ExperienceWhereInput>;
-  experiences_some?: InputMaybe<ExperienceWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -7605,7 +7589,7 @@ export enum TechnologyOrderByInput {
 
 export type TechnologyUpdateInput = {
   cl9byrjtr46s001ta49p61v1w?: InputMaybe<ProjectUpdateManyInlineInput>;
-  experiences?: InputMaybe<ExperienceUpdateManyInlineInput>;
+  clah4oi4s0hbi01t64gyo9e97?: InputMaybe<ExperienceUpdateManyInlineInput>;
   knowledgeLevel?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
 };
@@ -7709,9 +7693,6 @@ export type TechnologyWhereInput = {
   documentInStages_every?: InputMaybe<TechnologyWhereStageInput>;
   documentInStages_none?: InputMaybe<TechnologyWhereStageInput>;
   documentInStages_some?: InputMaybe<TechnologyWhereStageInput>;
-  experiences_every?: InputMaybe<ExperienceWhereInput>;
-  experiences_none?: InputMaybe<ExperienceWhereInput>;
-  experiences_some?: InputMaybe<ExperienceWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;

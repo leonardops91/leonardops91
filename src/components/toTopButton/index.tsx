@@ -20,7 +20,10 @@ export default function ToTopButton(props: ToTopButtonProps) {
     const colorClass = colorsStyles[props.pageColor]
 
     function handleClick(){
-        scroll.scrollToTop()
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
     }
     return (
         <div onClick={handleClick} className={` cursor-pointer  border-2 p-3 bottom-3 right-3 fixed group rounded-xl border-blue-900  transition-all ${colorClass}`}>
