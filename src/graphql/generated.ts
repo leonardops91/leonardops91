@@ -8897,7 +8897,7 @@ export const GetUserInfoDocument = gql`
     endDate
     workload
   }
-  technologies {
+  technologies(last: 300) {
     name
     knowledgeLevel
   }
