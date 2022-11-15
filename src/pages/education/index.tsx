@@ -1,6 +1,6 @@
 import { DesktopTower, NotePencil } from "phosphor-react";
 import { Text } from "../../components/textComponent";
-import { WordCloud } from "../../components/wordCloud";
+import WordCloud from "../../components/wordCloud";
 import { GetUserInfoQuery } from "../../graphql/generated";
 
 type EducationProps = {
@@ -95,16 +95,14 @@ export default function Education(props: EducationProps){
               <Text variant="subtitle" content="Knowledge Cloud" />
             </header>
             <main className="relative flex items-center justify-center h-full w-full">
-              <div className="absolute opacity-80 w-full h-full">
+              <div className="absolute opacity-90 w-full h-full">
                 <div className="absolute w-full h-[280px] bg-white rounded-full top-24 left-0 "></div>
                 <div className="absolute w-2/3 h-[280px] bg-white rounded-full top-12 left-72 "></div>
                 <div className="absolute w-2/3 h-[280px] bg-white rounded-full top-32 left-40 "></div>
                 <div className="absolute w-3/5 h-[280px] bg-white rounded-full top-0 left-44 "></div>
               </div>
-              <WordCloud
-                pageColor={props.pageColor}
-                data={educationInfo.technologies}
-              />
+               
+              <WordCloud data={educationInfo.technologies}/>
             </main>
           </div>
         </div>

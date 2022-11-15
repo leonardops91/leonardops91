@@ -32,7 +32,6 @@ export default function Projects(props: ProjectsProps){
             <Text variant="title" content="Projects" />
           </header>
           <main className="h-full w-full"><Slider cardsInfo={projectsInfo.projects} /></main>
-          
         </div>
       </section>
     );

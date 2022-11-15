@@ -1,76 +1,44 @@
-import anime from 'animejs/lib/anime.es.js';
-import { useEffect } from 'react';
-import ReloadButton from '../reloadButton';
+import { Tag2Cloud } from "./tag2Cloud";
+import MASK from "./cloud.png";
 
-type WordCloudPros={
-    pageColor: string
-    data: {
-      name: string
-      knowledgeLevel: number
-    }[] | undefined
+type WordCloudProps = {
+  data?: {
+    name: string
+    knowledgeLevel: number
+  }[]
+}
+
+type CloudDataType = {
+  text: string,
+  weight: number
+}[]
+
+export default function WordCloud(props: WordCloudProps) {
+  const cloud = document.getElementById("cloud");
+
+
+  if(cloud && props.data){
+    const tag2Cloud = new Tag2Cloud(cloud, {
+      width: 2000,
+      height: 1000,
+      maskImage: MASK,
+      minFontSize: 14,
+      maxFontSize: 72,
+      angleCount: 3,
+      angleFrom: 0,
+      angleTo: 0,
+      padding: 2,
+      canvas: false,
+    });
+    const cloudData: CloudDataType = props.data.map(item => {
+      return{text: item.name, weight: item.knowledgeLevel}
+    })
+
+    tag2Cloud.draw(cloudData);
+
   }
 
-  type colorsStylesType = {
-    [key: string]: string;
-  };
-  
-  const colorsStyles: colorsStylesType = {
-   purple:
-     "text-purple-900",
-   blue: "text-blue-900",
-   green:
-     "text-green-900",
-   red: "text-red-900",
-  };
-  
-  export function WordCloud(props: WordCloudPros) {
-  const colorClass = colorsStyles[props.pageColor];
-
-    const sizeClasses = (value: number) => {
-        if(value < 20) {
-            return "text-base text "
-        }
-        if(value < 40) {
-            return "text-lg text "
-        }
-        if(value < 60) {
-            return "text-2xl text "
-        }
-        if(value < 80) {
-            return "text-5xl text " 
-        }
-        return "text-9xl text "
-    }
-
-    const textBase = document.getElementsByClassName('text ')
-
-    function animateText() {
-        anime({
-            targets: textBase,
-            translateX: () => {return anime.random(-400, 400)},
-            translateY: () => {return anime.random(-180, 180)},
-            easing: 'linear',
-            duration: 3000,
-            delay: anime.stagger(100),
-        })
-    }
-    useEffect(() =>{
-        animateText()
-    },[])
-    return (
-      <>
-        <div className="relative flex items-center justify-center h-full w-full ">
-          {props.data &&
-            props.data.map((word) => {
-              return (
-                <p className={`${sizeClasses(word.knowledgeLevel)}} ${colorClass} absolute`}>
-                  {word.name}{" "}
-                </p>
-              );
-            })}
-        </div>
-            <ReloadButton pageColor={props.pageColor} onClick={animateText}/>
-      </>
-    );
+  return (
+    <div id="cloud"></div>
+    )
   }
-  

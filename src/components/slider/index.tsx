@@ -2,7 +2,7 @@ import React from 'react';
 import { CarouselProvider, Slider as SlidePlace, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import Card from '../card';
-import { CaretCircleDoubleLeft, CaretCircleLeft, CaretCircleRight } from 'phosphor-react';
+import { CaretCircleLeft, CaretCircleRight } from 'phosphor-react';
 
 type SliderProps ={
     cardsInfo: {
