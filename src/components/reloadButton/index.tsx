@@ -3,6 +3,7 @@ import anime from 'animejs/lib/anime.es.js';
 
 
 type ReloadButtonProps = {
+    id: string
     pageColor: string
     onClick: () => void
 }
@@ -21,7 +22,7 @@ const colorsStyles: colorStylesType = {
 export default function ReloadButton(props:ReloadButtonProps) {
     const colorClass = colorsStyles[props.pageColor]
 
-    const icon = document.getElementsByClassName('reloadButton')
+    const icon = document.getElementsByClassName(props.id)
     function animate() {
         anime({
             targets: icon,
@@ -38,7 +39,7 @@ export default function ReloadButton(props:ReloadButtonProps) {
     }
     return (
         <div onClick={handleClick} className={`absolute cursor-pointer  border-2 p-3 bottom-20 left-3 group rounded-xl transition-all ${colorClass}`}>
-            <ArrowsClockwise className="w-full reloadButton" size={25}/>
+            <ArrowsClockwise id={props.id} className={`w-full ${props.id}`} size={25}/>
         </div>
     )
 }

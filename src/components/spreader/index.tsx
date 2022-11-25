@@ -43,7 +43,7 @@ type SpreaderPros={
         {array.map(item => {
         return <div className={`element w-10 h-32 z-0 ${props.colorClass}`}></div>
         })}
-        <ReloadButton onClick={animateComponent} pageColor={pageColor} />
+        <ReloadButton id='reloadBackground' onClick={animateComponent} pageColor={pageColor} />
       </div>
     );
   }

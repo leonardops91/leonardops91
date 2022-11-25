@@ -107,7 +107,7 @@ export default function Education(props: EducationProps){
               </div>
                
               <WordCloud data={educationInfo.technologies}/>
-              <ReloadButton pageColor={props.pageColor} onClick={() => setReloadCloud(!reloadCloud)} />
+              <ReloadButton id="reloadCloud" pageColor={props.pageColor} onClick={() => setReloadCloud(!reloadCloud)} />
             </main>
           </div>
         </div>
