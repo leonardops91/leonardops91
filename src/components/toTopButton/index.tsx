@@ -26,7 +26,7 @@ export default function ToTopButton(props: ToTopButtonProps) {
         })
     }
     return (
-        <div onClick={handleClick} className={` cursor-pointer  border-2 border-blue-900 p-3 bottom-3 right-3 fixed group rounded-xl  transition-all ${colorClass}`}>
+        <div onClick={handleClick} className={` cursor-pointer  border-2 border-blue-900 p-3 bottom-3 right-3 fixed z-50 group rounded-xl  transition-all ${colorClass}`}>
             <CaretUp className="w-full" size={25}/>
         </div>
     )

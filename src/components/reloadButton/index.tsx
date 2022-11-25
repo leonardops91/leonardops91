@@ -38,7 +38,7 @@ export default function ReloadButton(props:ReloadButtonProps) {
         props.onClick()
     }
     return (
-        <div onClick={handleClick} className={`absolute cursor-pointer  border-2 p-3 bottom-20 left-3 group rounded-xl transition-all ${colorClass}`}>
+        <div onClick={handleClick} className={`absolute z-50 cursor-pointer  border-2 p-3 bottom-20 left-3 group rounded-xl transition-all ${colorClass}`}>
             <ArrowsClockwise id={props.id} className={`w-full ${props.id}`} size={25}/>
         </div>
     )
