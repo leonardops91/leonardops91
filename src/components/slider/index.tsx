@@ -24,15 +24,15 @@ export default function Slider(props: SliderProps) {
         totalSlides={props.cardsInfo.length}
         infinite
         isPlaying
-        className="flex items-center justify-center gap-4 w-full h-full"
+        className="relative flex items-center justify-center gap-4 w-screen h-screen"
       >
         <ButtonBack>
           <CaretCircleLeft
             size={35}
-            className="hover:brightness-75 transition-all"
+            className="hover:brightness-75 absolute bottom-1/2 left-3 z-10 transition-all"
           />
         </ButtonBack>
-        <SlidePlace className="w-4/5 h-[70vh]">
+        <SlidePlace className="w-full h-full">
           {props.cardsInfo.map((cardInfo) => {
             return (
               <Slide
@@ -49,7 +49,7 @@ export default function Slider(props: SliderProps) {
         <ButtonNext>
           <CaretCircleRight
             size={35}
-            className="hover:brightness-75 transition-all"
+            className="hover:brightness-75 absolute bottom-1/2 right-3 z-10 transition-all"
           />
         </ButtonNext>
       </CarouselProvider>

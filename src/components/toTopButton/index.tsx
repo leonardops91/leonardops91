@@ -10,10 +10,10 @@ type colorStylesType = {
 }
 
 const colorsStyles: colorStylesType = {
-    purple: 'border-purple-100 hover:brightness-[80%] bg-purple-100',
-    blue: 'border-blue-100 hover:brightness-[80%] bg-blue-100',
-    green: 'border-green-100 hover:brightness-[80%] bg-green-100',
-    red: 'border-red-100 hover:brightness-[80%] bg-red-100'
+    purple: 'hover:brightness-[80%] bg-purple-100 border-purple-900 text-purple-900',
+    blue: 'hover:brightness-[80%] bg-blue-100 border-blue-900 text-blue-900',
+    green: 'hover:brightness-[80%] bg-green-100 border-green-900 text-green-900',
+    red: 'hover:brightness-[80%] bg-red-100 border-red-900 text-red-900'
 }
 
 export default function ToTopButton(props: ToTopButtonProps) {
@@ -26,8 +26,8 @@ export default function ToTopButton(props: ToTopButtonProps) {
         })
     }
     return (
-        <div onClick={handleClick} className={` cursor-pointer  border-2 p-3 bottom-3 right-3 fixed group rounded-xl border-blue-900  transition-all ${colorClass}`}>
-            <CaretUp className="text-purple-900 w-full group-hover:text-blue-900" size={25}/>
+        <div onClick={handleClick} className={` cursor-pointer  border-2 border-blue-900 p-3 bottom-3 right-3 fixed group rounded-xl  transition-all ${colorClass}`}>
+            <CaretUp className="w-full" size={25}/>
         </div>
     )
 }

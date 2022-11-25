@@ -10,7 +10,7 @@ export default function Footer(props: footerProps) {
         <section className="h-[10vh]">
             <div className="flex justify-between items-center max-w-screen-xl w-full h-full m-auto border-t-2 border-purple-100">
                 <Text variant="subtitle" content="Wanna know how this was built?"/>
-                <Rocket size={32} className="text-purple-100" />
+                <Rocket size={32} />
                 <Text variant="subtitle" content="Developed by | Leonardo Souza"/>
             </div>
         </section>

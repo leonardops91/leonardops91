@@ -14,16 +14,16 @@ type colorsStylesType = {
 
 const colorsStyles: colorsStylesType = {
   dark: {
-    purple: `bg-purple-900 text-purple-100`,
-    blue: `bg-blue-900 text-blue-100`,
-    green: `bg-green-900 text-green-100`,
-    red: `bg-red-900 text-red-100`,
+    purple: `bg-purple-900 text-purple-100 shadow-purple-400 shadow-xl`,
+    blue: `bg-blue-900 text-blue-100 shadow-blue-400 shadow-xl`,
+    green: `bg-green-900 text-green-100 shadow-green-400 shadow-xl`,
+    red: `bg-red-900 text-red-100 shadow-red-400 shadow-xl`,
   },
   light: {
-    purple: `bg-purple-100 text-purple-900`,
-    blue: `bg-blue-100 text-blue-900`,
-    green: `bg-green-100 text-green-900`,
-    red: `bg-red-100 text-red-900`,
+    purple: `bg-purple-100 text-purple-900 shadow-purple-400 shadow-xl`,
+    blue: `bg-blue-100 text-blue-900 shadow-blue-400 shadow-xl`,
+    green: `bg-green-100 text-green-900 shadow-green-400 shadow-xl`,
+    red: `bg-red-100 text-red-900 shadow-red-400 shadow-xl`,
   },
 };
 
@@ -39,10 +39,7 @@ function App() {
   const themeClass =
     generalTheme === "dark" ? "before:opacity-80" : "before:opacity-10";
 
-  const [isScreenOntop, setIsScreenOnTop] = useState(true);
-  window.addEventListener("scroll", () => {
-    setIsScreenOnTop(window.scrollY === 0)
-  });
+
 
   return (
     <>
@@ -61,12 +58,12 @@ function App() {
             themeClass={themeClass}
             setPageColor={setPageColor}
           />
-          <About data={data} id="about" />
+          <About data={data} id="about" colorClass={colorClass}/>
           <Education data={data} id="education" pageColor={pageColor} themeClass={themeClass}/>
           <Projects data={data} id="projects" />
           <Contact data={data} id="contact" pageColor={pageColor} themeClass={themeClass}/>
           <Footer pageColor={pageColor} />
-          {!isScreenOntop && <ToTopButton pageColor={pageColor} />}
+          <ToTopButton pageColor={pageColor} />
         </div>
       )}
     </>

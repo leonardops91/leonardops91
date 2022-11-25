@@ -40,7 +40,7 @@ export default function Contact(props: ContactProps){
   return (
     <section
       id={props.id}
-      className={`bg-nature bg-no-repeat bg-cover h-[90vh] before:absolute before:w-full before:h-[90vh] ${colorClass} ${props.themeClass} `}
+      className={`bg-nature bg-no-repeat bg-cover h-[93vh] before:absolute before:w-full before:h-[93vh] ${colorClass} ${props.themeClass} `}
     >
       <div
         className={`flex flex-col justify-evenly items-center py-6 relative text-center m-auto max-w-screen-xl w-full h-[90vh] border-b-1 `}

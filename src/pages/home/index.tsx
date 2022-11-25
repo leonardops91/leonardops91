@@ -30,7 +30,7 @@ const colorsStyles: colorsStylesType = {
     const positionAsNumber = +position
     setTimeout(() => {
       window.scrollTo(0, positionAsNumber)
-    }, 1);
+    }, 0);
     
   }
 

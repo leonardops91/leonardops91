@@ -37,8 +37,5 @@ export default function WordCloud(props: WordCloudProps) {
     tag2Cloud.draw(cloudData);
 
   }
-
-  return (
-    <div id="cloud"></div>
-    )
+  return <div id="cloud"></div>;
   }

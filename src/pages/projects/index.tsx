@@ -1,6 +1,7 @@
 import { Text } from "../../components/textComponent";
 import { GetUserInfoQuery } from "../../graphql/generated";
 import Slider from '../../components/slider/index.js'
+import Card from "../../components/card";
 
 type ProjectsProps = {
   data: GetUserInfoQuery;
@@ -25,13 +26,17 @@ export default function Projects(props: ProjectsProps){
     return (
       <section
         id={props.id}
-        className="w-screen h-[110vh] py-6 overflow-hidden flex flex-col items-center "
+        className="w-screen h-[110vh] py-6 flex flex-col items-center"
       >
-        <div className="flex flex-col items-center max-w-screen-xl w-full h-[80%]">
+        <div className="flex gap-4 flex-col items-center max-w-screen-xl w-full h-[100%]">
           <header>
             <Text variant="title" content="Projects" />
           </header>
-          <main className="h-full w-full"><Slider cardsInfo={projectsInfo.projects} /></main>
+          <main className="grid gap-4 grid-cols-2 h-[85%] w-fit overflow-auto scrollbar-hide">
+            {projectsInfo.projects.map(cardInfo => {
+                return <Card snapURL={cardInfo.snapURL || ""} title={cardInfo.name} type={cardInfo.type} description={cardInfo.description} repositoryURL={cardInfo.projectRepositoryURL} previewURL={cardInfo.projectpreviewURL || ""}  />
+            })}
+            </main>
         </div>
       </section>
     );

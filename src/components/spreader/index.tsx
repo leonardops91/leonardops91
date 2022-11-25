@@ -1,51 +1,50 @@
 import anime from 'animejs/lib/anime.es.js';
 import { useEffect } from 'react';
 import ReloadButton from '../reloadButton';
+import './styles.css'
 
 type SpreaderPros={
-    pageColor: string
-  }
-
-  type colorsStylesType = {
-    [key: string]: string;
-  };
-  
-  const colorsStyles: colorsStylesType = {
-   purple:
-     "text-purple-900",
-   blue: "text-blue-900",
-   green:
-     "text-green-900",
-   red: "text-red-900",
-  };
+    colorClass: string
+}
   
   export function Spreader(props: SpreaderPros) {
-  const colorClass = colorsStyles[props.pageColor];
-
-   const elements = document.getElementsByClassName("element");
-
-    function animateText() {
-        anime({
-            targets: elements,
-            translateX: () => {return anime.random(-400, 400)},
-            translateY: () => {return anime.random(-180, 180)},
-            easing: 'linear',
-            duration: 3000,
-            delay: anime.stagger(100),
-        })
+    const pageColor = localStorage.getItem("pageColor") || "purple";
+    const numberOfElements = 50;
+    const array = []
+    for(let i = 0; i<numberOfElements; i++){
+      array.push('')
     }
-    useEffect(() =>{
-        animateText()
-    },[])
+
+    const elements = document.getElementsByClassName("element");
+    function animateComponent() {
+      anime({
+        targets: elements,
+        translateX: () => {
+          return anime.random(-650, 650);
+        },
+        translateY: () => {
+          return anime.random(-400, 400);
+        },
+        easing: "linear",
+        duration: 3000,
+        delay: anime.stagger(100),
+      });
+    }
+
+    useEffect(() => {
+      animateComponent();
+    }, []);
+
     return (
-      <>
-          <div className="element"></div>
-          <div className="element"></div>
-          <div className="element"></div>
-          <div className="element"></div>
-          <div className="element"></div>
-            <ReloadButton pageColor={props.pageColor} onClick={animateText}/>
-      </>
+      <div
+        id="elementFather"
+        className="flex items-center justify-center w-full h-full absolute overflow-hidden"
+      >
+        {array.map(item => {
+        return <div className={`element w-10 h-32 z-0 ${props.colorClass}`}></div>
+        })}
+        <ReloadButton onClick={animateComponent} pageColor={pageColor} />
+      </div>
     );
   }
   
