@@ -21,7 +21,7 @@ export default function Footer(props: footerProps) {
             variant="subtitle"
             content="Wanna know how this was built?"
           />
-          <div className={`${isModalOpen && "transition-all duration-[.5s] ease-linear -translate-y-16"}`}>
+          <div className={`transition-all duration-[.3s] ease-linear ${isModalOpen && " -translate-y-16 opacity-0"}`}>
             <Rocket
               size={32}
               onClick={handleClick}

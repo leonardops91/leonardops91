@@ -13,7 +13,7 @@ export default function Modal(props: ModalProps){
       <>
         <div className="flex items-center justify-center " >
           <div
-            className={`flex gap-2 justify-center items-center flex-col p-6 fixed z-50 rounded-lg bottom-20 backdrop-blur bg-gray-300 h-[40%] w-[40%] transition-all duration-[.1s] ease-linear opacity-0 -mb-96 ${
+            className={`flex gap-2 justify-center items-center flex-col p-6 fixed z-50 rounded-lg bottom-20 backdrop-blur-md bg-gray-300 h-[40%] w-[40%] transition-all duration-[.1s] ease-linear opacity-0 -mb-96 ${
               props.isModalOpen && "mb-0 bg-opacity-50 opacity-100 "
             }`}
           >

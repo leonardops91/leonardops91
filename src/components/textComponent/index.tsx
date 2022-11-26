@@ -16,7 +16,7 @@ export function Text(props: TextProps) {
         case "medium":
             return <p className={`font-thin text-md  ${props.className}`}>{props.content ||"medium"}</p>
         case "small":
-            return <p className={`font-thin text-md  ${props.className}`}>{props.content ||"small"}</p>
+            return <p className={`font-thin text-sm  ${props.className}`}>{props.content ||"small"}</p>
         case "bold":
             return <p className={`font-bold text-sm  ${props.className}`}>{props.content ||"bold"}</p>
         default:
