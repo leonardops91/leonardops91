@@ -12,7 +12,7 @@ type SpreaderPros={
     const numberOfElements = 50;
     const array = []
     for(let i = 0; i<numberOfElements; i++){
-      array.push('')
+      array.push(i)
     }
 
     const elements = document.getElementsByClassName("element");
@@ -41,7 +41,7 @@ type SpreaderPros={
         className="flex items-center justify-center w-full h-full absolute overflow-hidden"
       >
         {array.map(item => {
-        return <div className={`element w-10 h-32 z-0 ${props.colorClass}`}></div>
+        return <div key={item} className={`element w-10 h-32 z-0 ${props.colorClass}`}></div>
         })}
         <ReloadButton id='reloadBackground' onClick={animateComponent} pageColor={pageColor} />
       </div>

@@ -67,7 +67,7 @@ export default function Education(props: EducationProps){
               <ul className="flex flex-col gap-4">
                 {educationInfo.courses?.map((course) => {
                   return (
-                    <li className="flex gap-2">
+                    <li key={course.name} className="flex gap-2">
                       ▪
                       <Text variant="bold" content={course.name} />
                       -

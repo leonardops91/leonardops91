@@ -34,7 +34,7 @@ export default function Projects(props: ProjectsProps){
           </header>
           <main className="grid gap-4 grid-cols-2 h-[85%] w-fit overflow-auto scrollbar-hide">
             {projectsInfo.projects.map(cardInfo => {
-                return <Card snapURL={cardInfo.snapURL || ""} title={cardInfo.name} type={cardInfo.type} description={cardInfo.description} repositoryURL={cardInfo.projectRepositoryURL} previewURL={cardInfo.projectpreviewURL || ""}  />
+                return <Card key={cardInfo.name} snapURL={cardInfo.snapURL || ""} title={cardInfo.name} type={cardInfo.type} description={cardInfo.description} repositoryURL={cardInfo.projectRepositoryURL} previewURL={cardInfo.projectpreviewURL || ""}  />
             })}
             </main>
         </div>

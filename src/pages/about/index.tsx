@@ -60,10 +60,10 @@ export default function About(props: AboutProps) {
             <Text variant="subtitle" content="General Education" />
           </header>
           <main className="flex flex-col-reverse gap-4 w-full ">
-            {userBackground.education?.map((course) => {
-              return (
-                <ul>
-                  <li className="flex gap-1">
+            <ul>
+              {userBackground.education?.map((course) => {
+                return (
+                  <li key={course.name} className="flex gap-1">
                     ▪
                     <Text variant="bold" content={course.name} />
                     -
@@ -80,9 +80,9 @@ export default function About(props: AboutProps) {
                     />
                     )
                   </li>
-                </ul>
-              );
-            })}
+                );
+              })}
+            </ul>
           </main>
         </div>
         <div className="flex flex-col w-full items-baseline">
@@ -91,10 +91,10 @@ export default function About(props: AboutProps) {
             <Text variant="subtitle" content="IT Experience" />
           </header>
           <main className="flex flex-col-reverse gap-4 w-full ">
-            {userBackground.experiences?.map((experience) => {
-              return (
-                <ul>
-                  <li className="flex flex-col gap-1 ">
+            <ul>
+              {userBackground.experiences?.map((experience) => {
+                return (
+                  <li key={experience.startDate.toString()} className="flex flex-col gap-1 ">
                     <header className="flex gap-1">
                       ▪
                       <Text variant="bold" content={experience.companyName} />
@@ -130,6 +130,7 @@ export default function About(props: AboutProps) {
                         {experience.technologies.map((technology) => {
                           return (
                             <Text
+                              key={technology.name}
                               variant="small"
                               content={`- ${technology.name}`}
                             />
@@ -138,9 +139,9 @@ export default function About(props: AboutProps) {
                       </div>
                     </main>
                   </li>
-                </ul>
-              );
-            })}
+                );
+              })}
+            </ul>
           </main>
         </div>
       </section>
