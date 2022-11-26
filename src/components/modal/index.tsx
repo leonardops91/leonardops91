@@ -22,7 +22,7 @@ export default function Modal(props: ModalProps){
             <Text variant="subtitle" content="You found an easter egg" />
             <Text variant="medium" content="Now you can look the code of this page" className="text-center"/>
             <Text variant="bold" content="Have fun!"/>
-            <a className="rounded-md py-1 px-2 bg-gray-200 hover:bg-gray-300 transition-all" target="_blanck" rel="noopener noreferrer" href="https://gitlab.com/leonardops91/personalPage">Go to repository</a>
+            <a className="rounded-md py-1 px-2 bg-gray-200 hover:bg-gray-300 text-gray-900 transition-all" target="_blanck" rel="noopener noreferrer" href="https://gitlab.com/leonardops91/personalPage">Go to repository</a>
           </div>
         </div>
       </>
