@@ -7,5 +7,5 @@
 - 👯 I’m looking to collaborate on with relevant projects
 - 🤔 I’m looking for help with my personal projects. If you like some of these projects, feel free to collaborate
 - 💬 Ask me about ...
-- 📫 How to reach me: you can go to my Personal Page on <a href="https://leonardops91.github.io">Leonardo's Page</a>
+- 📫 How to reach me: you can go to my Personal Page on <a href="https://leonardops91.github.io" target="_blanck">Leonardo's Page</a>
 
